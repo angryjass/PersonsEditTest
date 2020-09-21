@@ -1,4 +1,5 @@
 import axios from "axios";
+axios.defaults.baseURL = "https://localhost:44323/api/";
 let token = "";
 
 export default {
@@ -8,7 +9,7 @@ export default {
       axios
         .post(
           // eslint-disable-next-line no-undef
-          appConfig.ApiUrl + "Account",
+          "Account",
           {
             login: authProperties.login,
             password: authProperties.password
@@ -25,7 +26,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         // eslint-disable-next-line no-undef
-        .get(appConfig.ApiUrl + "Persons", {
+        .get("Persons", {
           headers: { Authorization: "Bearer " + token }
         })
         .then(response => resolve(response.data))
@@ -37,7 +38,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         // eslint-disable-next-line no-undef
-        .delete(appConfig.ApiUrl + "Persons", {
+        .delete("Persons", {
           headers: {
             Authorization: "Bearer " + token
           },
@@ -55,7 +56,7 @@ export default {
       axios
         .post(
           // eslint-disable-next-line no-undef
-          appConfig.ApiUrl + "Persons",
+          "Persons",
           {
             Person: person.person,
             Roles: Object.assign({}, person).roles
@@ -74,7 +75,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         // eslint-disable-next-line no-undef
-        .get(appConfig.ApiUrl + "Roles", {
+        .get("Roles", {
           headers: { Authorization: "Bearer " + token }
         })
         .then(response => resolve(response.data))
